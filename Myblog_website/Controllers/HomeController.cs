@@ -10,7 +10,7 @@ namespace Myblog_website.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("khac biet o day");
         }
 
         public ActionResult About()
