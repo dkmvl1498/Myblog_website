@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Index_Login";
+}
+    <link href="~/Content/Style/Index_Login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/387c89d594.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/JavaScript/JS.js"></script>
+
+<div class="container-login">
+    <div class="img-login">
+        <img src="~/Content/images/asdasdasdasd.jpg" />
+    </div>
+    <div class="form-main">
+        <form class="form-login" method="post" action="">
+            <h3>Well come</h3>
+            <h2>Account Login</h2>
+            <input type="text" placeholder="User" class="txt" id="user-login"/>
+            <p class="alertlogin al-user" style="color: red;"></p>
+            <input type="password" placeholder="Password" class="txt" id="pass-login"/>
+            <p class="alertlogin al-pass" style="color: red;"></p>
+            <input type="submit"class="btn btn-login" id="btn-login" onsubmit="return validate()" value="Login" />
+            <ul><li onclick="signup()"><a href="#">Signup</a></li></ul>
+            <a href="">Forgot your password</a>
+        </form>
+
+        <form class="form-singup hidden">
+            <span style="width: 100%; font-size: 20px; padding-left: 15px;" onclick="backsignin()"><a href="#" style="color:black;"><i class="fas fa-chevron-left"></i></a></span>
+            <h3>Well come</h3>
+            <h2>Create Account</h2>
+            <input type="text" placeholder="User" class="txt" id="create-user" />
+            <input type="password" placeholder="Password" class="txt" id="create-pass" />
+            <input type="password" placeholder="Re Password" class="txt" id="create-re-pass" />
+            <p class="alertlogin al-create" style="color: red"></p>
+            <button class="btn" id="btn-create">Create</button>
+        </form>
+    </div>
+</div>
