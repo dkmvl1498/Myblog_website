@@ -135,6 +135,7 @@
     <Content Include="Content\images\asdasdasdasd.jpg" />
     <Content Include="Content\JavaScript\JS.js" />
     <Content Include="Content\Style\Index_Login.css" />
+    <Content Include="Content\Style\Layout-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
