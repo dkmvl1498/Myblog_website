@@ -1,7 +1,83 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<link href="~/Content/Style/About-style.css" rel="stylesheet" />
 
-<p>Use this area to provide additional information.</p>
+<div class="about-us">
+    <div class="about-title">
+        <h2>Meet out team</h2>
+    </div>
+    <div class="about-slogan">
+        <p>
+            We are all very different. We were born in different cities, at
+            different times, we love different music, food, movies. But we have
+            something that unites us all. It is our company. We are its heart. We
+            are not just a team, we are a family.
+        </p>
+    </div>
+    <div class="about-btn-contact">
+        <button class="btn-contact">Contact Us</button>
+    </div>
+    <div class="about-profile">
+
+        <div class="btn-pf">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+
+        <div class="profile-main">
+            <div class="profile-avata">
+                <img src="~/Content/images/avata1.jpg" />
+            </div>
+            <div class="profile-my-slogan">
+                <p>
+                    Good afternoon. I am very pleased with the quality of the work of your
+                    employee representing your wonderful company.
+                </p>
+            </div>
+            <div class="profile-name">
+                <label class="pf-name">
+                    YazSakura
+                </label>
+                <i class="tag-name">Developer</i>
+            </div>
+            <div class="profile-contact">
+                <ul>
+                    <li><a><i class="far fa-envelope"></i></a></li>
+                    <li><a><i class="fab fa-facebook"></i></a></li>
+                    <li><a><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="btn-pf">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    <div class="contact-form">
+        @using (Html.BeginForm("", ""))
+        {
+            <h3>Contact US</h3>
+            <div class="fr-1">
+                <div class="ct-wrap">
+                    <label>Name</label>
+                    <input type="text" class="ct-name ct-txt" />
+                </div>
+                <div class="ct-wrap">
+                    <label>Email</label>
+                    <input type="email" class="ct-email ct-txt" />
+                </div>
+                <div class="ct-wrap">
+                    <label>Phone</label>
+                    <input type="tel" class="ct-phone ct-txt" />
+                </div>
+            </div>
+            <div class="fr-mess">
+                <label>Message</label>
+                <textarea class="ct-mess ct-txt"></textarea>
+            </div>
+            <div class="btn-submit">
+                <button class="submit">Send form</button>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿.main-slider
+{
+    width: 100%;
+    height: 450px;
+    display: flex;
+}
+.main-slider .slider-img
+{
+    width: 50%;
+    height: 400px;  
+    padding-right: 10px;
+}
+.slider-img img
+{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.main-slider .slider-infor
+{
+    width: 50%;
+    height: 400px;
+    padding-left: 10px;
+}
+.slider-infor .info-title
+{
+    width: auto;
+    height: 50px;
+    text-align: center;
+}
+

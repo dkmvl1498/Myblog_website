@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlogerWebsiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="id_acc" />
+          </Key>
+          <Property Name="id_acc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="12" />
+          <Property Name="pass_Word" Type="varchar" MaxLength="30" />
+          <Property Name="access" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblAllOfWeb">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slogan" Type="nvarchar" MaxLength="250" />
+          <Property Name="img_Logo" Type="varchar" MaxLength="250" />
+          <Property Name="img_Login" Type="varchar" MaxLength="250" />
+          <Property Name="link_FanPage_Face" Type="varchar" MaxLength="250" />
+          <Property Name="link_FanPage_TW" Type="varchar" MaxLength="250" />
+          <Property Name="link_FanPage_IG" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblBaiViet">
+          <Key>
+            <PropertyRef Name="id_BaiViet" />
+          </Key>
+          <Property Name="id_BaiViet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_theLoai" Type="int" />
+          <Property Name="titleBaiViet" Type="nvarchar" MaxLength="50" />
+          <Property Name="img_Title" Type="varchar" MaxLength="50" />
+          <Property Name="danhGia" Type="int" />
+          <Property Name="view_BaiViet" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBV_comment">
+          <Key>
+            <PropertyRef Name="id_Cmt" />
+          </Key>
+          <Property Name="id_Cmt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_BaiViet" Type="int" />
+          <Property Name="text_cmt" Type="nvarchar" MaxLength="250" />
+          <Property Name="cmt_like" Type="int" />
+          <Property Name="cmt_dislike" Type="int" />
+          <Property Name="time_cmt" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tblTag">
+          <Key>
+            <PropertyRef Name="id_tag" />
+          </Key>
+          <Property Name="id_tag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_tag" Type="nvarchar" MaxLength="10" />
+          <Property Name="sl_tag" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTag_BaiViet">
+          <Key>
+            <PropertyRef Name="id_Tag_Baiviet" />
+          </Key>
+          <Property Name="id_Tag_Baiviet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tag" Type="int" />
+          <Property Name="id_BaiViet" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTHeLoai">
+          <Key>
+            <PropertyRef Name="id_theloai" />
+          </Key>
+          <Property Name="id_theloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_TheLoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="soLuong" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="id_User" />
+          </Key>
+          <Property Name="id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_acc" Type="int" />
+          <Property Name="name_User" Type="nvarchar" MaxLength="30" />
+          <Property Name="nickName" Type="nvarchar" MaxLength="15" />
+          <Property Name="date_Of_Birth" Type="date" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="title_User" Type="nvarchar" MaxLength="150" />
+          <Property Name="link_FB" Type="varchar" MaxLength="150" />
+          <Property Name="link_IG" Type="varchar" MaxLength="150" />
+          <Property Name="sl_BaiViet" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser_Baiviet">
+          <Key>
+            <PropertyRef Name="id_User_Baiviet" />
+          </Key>
+          <Property Name="id_User_Baiviet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_User" Type="int" />
+          <Property Name="id_Baiviet" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblBaiVie__id_th__5CD6CB2B">
+          <End Role="tblTHeLoai" Type="Self.tblTHeLoai" Multiplicity="0..1" />
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTHeLoai">
+              <PropertyRef Name="id_theloai" />
+            </Principal>
+            <Dependent Role="tblBaiViet">
+              <PropertyRef Name="id_theLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBV_com__id_Ba__6E01572D">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblBV_comment" Type="Self.tblBV_comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblBV_comment">
+              <PropertyRef Name="id_BaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTag_Ba__id_Ba__6B24EA82">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblTag_BaiViet" Type="Self.tblTag_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblTag_BaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTag_Ba__id_ta__6A30C649">
+          <End Role="tblTag" Type="Self.tblTag" Multiplicity="0..1" />
+          <End Role="tblTag_BaiViet" Type="Self.tblTag_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTag">
+              <PropertyRef Name="id_tag" />
+            </Principal>
+            <Dependent Role="tblTag_BaiViet">
+              <PropertyRef Name="id_tag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUser__id_acc__628FA481">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="id_acc" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="id_acc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUser_B__id_Ba__6754599E">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblUser_Baiviet" Type="Self.tblUser_Baiviet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblUser_Baiviet">
+              <PropertyRef Name="id_Baiviet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUser_B__id_Us__66603565">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUser_Baiviet" Type="Self.tblUser_Baiviet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="id_User" />
+            </Principal>
+            <Dependent Role="tblUser_Baiviet">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogerWebsiteModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAllOfWeb" EntityType="Self.tblAllOfWeb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBaiViet" EntityType="Self.tblBaiViet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBV_comment" EntityType="Self.tblBV_comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTag" EntityType="Self.tblTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTag_BaiViet" EntityType="Self.tblTag_BaiViet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTHeLoai" EntityType="Self.tblTHeLoai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser_Baiviet" EntityType="Self.tblUser_Baiviet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblBaiVie__id_th__5CD6CB2B" Association="Self.FK__tblBaiVie__id_th__5CD6CB2B">
+            <End Role="tblTHeLoai" EntitySet="tblTHeLoai" />
+            <End Role="tblBaiViet" EntitySet="tblBaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBV_com__id_Ba__6E01572D" Association="Self.FK__tblBV_com__id_Ba__6E01572D">
+            <End Role="tblBaiViet" EntitySet="tblBaiViet" />
+            <End Role="tblBV_comment" EntitySet="tblBV_comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTag_Ba__id_Ba__6B24EA82" Association="Self.FK__tblTag_Ba__id_Ba__6B24EA82">
+            <End Role="tblBaiViet" EntitySet="tblBaiViet" />
+            <End Role="tblTag_BaiViet" EntitySet="tblTag_BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTag_Ba__id_ta__6A30C649" Association="Self.FK__tblTag_Ba__id_ta__6A30C649">
+            <End Role="tblTag" EntitySet="tblTag" />
+            <End Role="tblTag_BaiViet" EntitySet="tblTag_BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUser__id_acc__628FA481" Association="Self.FK__tblUser__id_acc__628FA481">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUser_B__id_Ba__6754599E" Association="Self.FK__tblUser_B__id_Ba__6754599E">
+            <End Role="tblBaiViet" EntitySet="tblBaiViet" />
+            <End Role="tblUser_Baiviet" EntitySet="tblUser_Baiviet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUser_B__id_Us__66603565" Association="Self.FK__tblUser_B__id_Us__66603565">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUser_Baiviet" EntitySet="tblUser_Baiviet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlogerWebsiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="id_acc" />
+          </Key>
+          <Property Name="id_acc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="pass_Word" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="access" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.FK__tblUser__id_acc__628FA481" FromRole="tblAccount" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblAllOfWeb">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slogan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="img_Logo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="img_Login" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="link_FanPage_Face" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="link_FanPage_TW" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="link_FanPage_IG" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBaiViet">
+          <Key>
+            <PropertyRef Name="id_BaiViet" />
+          </Key>
+          <Property Name="id_BaiViet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_theLoai" Type="Int32" />
+          <Property Name="titleBaiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="danhGia" Type="Int32" />
+          <Property Name="view_BaiViet" Type="Int32" />
+          <NavigationProperty Name="tblTHeLoai" Relationship="Self.FK__tblBaiVie__id_th__5CD6CB2B" FromRole="tblBaiViet" ToRole="tblTHeLoai" />
+          <NavigationProperty Name="tblBV_comment" Relationship="Self.FK__tblBV_com__id_Ba__6E01572D" FromRole="tblBaiViet" ToRole="tblBV_comment" />
+          <NavigationProperty Name="tblTag_BaiViet" Relationship="Self.FK__tblTag_Ba__id_Ba__6B24EA82" FromRole="tblBaiViet" ToRole="tblTag_BaiViet" />
+          <NavigationProperty Name="tblUser_Baiviet" Relationship="Self.FK__tblUser_B__id_Ba__6754599E" FromRole="tblBaiViet" ToRole="tblUser_Baiviet" />
+        </EntityType>
+        <EntityType Name="tblBV_comment">
+          <Key>
+            <PropertyRef Name="id_Cmt" />
+          </Key>
+          <Property Name="id_Cmt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_BaiViet" Type="Int32" />
+          <Property Name="text_cmt" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cmt_like" Type="Int32" />
+          <Property Name="cmt_dislike" Type="Int32" />
+          <Property Name="time_cmt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblBaiViet" Relationship="Self.FK__tblBV_com__id_Ba__6E01572D" FromRole="tblBV_comment" ToRole="tblBaiViet" />
+        </EntityType>
+        <EntityType Name="tblTag">
+          <Key>
+            <PropertyRef Name="id_tag" />
+          </Key>
+          <Property Name="id_tag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_tag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sl_tag" Type="Int32" />
+          <NavigationProperty Name="tblTag_BaiViet" Relationship="Self.FK__tblTag_Ba__id_ta__6A30C649" FromRole="tblTag" ToRole="tblTag_BaiViet" />
+        </EntityType>
+        <EntityType Name="tblTag_BaiViet">
+          <Key>
+            <PropertyRef Name="id_Tag_Baiviet" />
+          </Key>
+          <Property Name="id_Tag_Baiviet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tag" Type="Int32" />
+          <Property Name="id_BaiViet" Type="Int32" />
+          <NavigationProperty Name="tblBaiViet" Relationship="Self.FK__tblTag_Ba__id_Ba__6B24EA82" FromRole="tblTag_BaiViet" ToRole="tblBaiViet" />
+          <NavigationProperty Name="tblTag" Relationship="Self.FK__tblTag_Ba__id_ta__6A30C649" FromRole="tblTag_BaiViet" ToRole="tblTag" />
+        </EntityType>
+        <EntityType Name="tblTHeLoai">
+          <Key>
+            <PropertyRef Name="id_theloai" />
+          </Key>
+          <Property Name="id_theloai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_TheLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="soLuong" Type="Int32" />
+          <NavigationProperty Name="tblBaiViets" Relationship="Self.FK__tblBaiVie__id_th__5CD6CB2B" FromRole="tblTHeLoai" ToRole="tblBaiViet" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="id_User" />
+          </Key>
+          <Property Name="id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_acc" Type="Int32" />
+          <Property Name="name_User" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="nickName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="date_Of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="title_User" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="link_FB" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="link_IG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="sl_BaiViet" Type="Int32" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK__tblUser__id_acc__628FA481" FromRole="tblUser" ToRole="tblAccount" />
+          <NavigationProperty Name="tblUser_Baiviet" Relationship="Self.FK__tblUser_B__id_Us__66603565" FromRole="tblUser" ToRole="tblUser_Baiviet" />
+        </EntityType>
+        <EntityType Name="tblUser_Baiviet">
+          <Key>
+            <PropertyRef Name="id_User_Baiviet" />
+          </Key>
+          <Property Name="id_User_Baiviet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_User" Type="Int32" />
+          <Property Name="id_Baiviet" Type="Int32" />
+          <NavigationProperty Name="tblBaiViet" Relationship="Self.FK__tblUser_B__id_Ba__6754599E" FromRole="tblUser_Baiviet" ToRole="tblBaiViet" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK__tblUser_B__id_Us__66603565" FromRole="tblUser_Baiviet" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK__tblUser__id_acc__628FA481">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="id_acc" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="id_acc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBaiVie__id_th__5CD6CB2B">
+          <End Role="tblTHeLoai" Type="Self.tblTHeLoai" Multiplicity="0..1" />
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTHeLoai">
+              <PropertyRef Name="id_theloai" />
+            </Principal>
+            <Dependent Role="tblBaiViet">
+              <PropertyRef Name="id_theLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBV_com__id_Ba__6E01572D">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblBV_comment" Type="Self.tblBV_comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblBV_comment">
+              <PropertyRef Name="id_BaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTag_Ba__id_Ba__6B24EA82">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblTag_BaiViet" Type="Self.tblTag_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblTag_BaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUser_B__id_Ba__6754599E">
+          <End Role="tblBaiViet" Type="Self.tblBaiViet" Multiplicity="0..1" />
+          <End Role="tblUser_Baiviet" Type="Self.tblUser_Baiviet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBaiViet">
+              <PropertyRef Name="id_BaiViet" />
+            </Principal>
+            <Dependent Role="tblUser_Baiviet">
+              <PropertyRef Name="id_Baiviet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTag_Ba__id_ta__6A30C649">
+          <End Role="tblTag" Type="Self.tblTag" Multiplicity="0..1" />
+          <End Role="tblTag_BaiViet" Type="Self.tblTag_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTag">
+              <PropertyRef Name="id_tag" />
+            </Principal>
+            <Dependent Role="tblTag_BaiViet">
+              <PropertyRef Name="id_tag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUser_B__id_Us__66603565">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUser_Baiviet" Type="Self.tblUser_Baiviet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="id_User" />
+            </Principal>
+            <Dependent Role="tblUser_Baiviet">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogerWebsiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+          <EntitySet Name="tblAllOfWebs" EntityType="Self.tblAllOfWeb" />
+          <EntitySet Name="tblBaiViets" EntityType="Self.tblBaiViet" />
+          <EntitySet Name="tblBV_comment" EntityType="Self.tblBV_comment" />
+          <EntitySet Name="tblTags" EntityType="Self.tblTag" />
+          <EntitySet Name="tblTag_BaiViet" EntityType="Self.tblTag_BaiViet" />
+          <EntitySet Name="tblTHeLoais" EntityType="Self.tblTHeLoai" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUser_Baiviet" EntityType="Self.tblUser_Baiviet" />
+          <AssociationSet Name="FK__tblUser__id_acc__628FA481" Association="Self.FK__tblUser__id_acc__628FA481">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblUser" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBaiVie__id_th__5CD6CB2B" Association="Self.FK__tblBaiVie__id_th__5CD6CB2B">
+            <End Role="tblTHeLoai" EntitySet="tblTHeLoais" />
+            <End Role="tblBaiViet" EntitySet="tblBaiViets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBV_com__id_Ba__6E01572D" Association="Self.FK__tblBV_com__id_Ba__6E01572D">
+            <End Role="tblBaiViet" EntitySet="tblBaiViets" />
+            <End Role="tblBV_comment" EntitySet="tblBV_comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTag_Ba__id_Ba__6B24EA82" Association="Self.FK__tblTag_Ba__id_Ba__6B24EA82">
+            <End Role="tblBaiViet" EntitySet="tblBaiViets" />
+            <End Role="tblTag_BaiViet" EntitySet="tblTag_BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUser_B__id_Ba__6754599E" Association="Self.FK__tblUser_B__id_Ba__6754599E">
+            <End Role="tblBaiViet" EntitySet="tblBaiViets" />
+            <End Role="tblUser_Baiviet" EntitySet="tblUser_Baiviet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTag_Ba__id_ta__6A30C649" Association="Self.FK__tblTag_Ba__id_ta__6A30C649">
+            <End Role="tblTag" EntitySet="tblTags" />
+            <End Role="tblTag_BaiViet" EntitySet="tblTag_BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUser_B__id_Us__66603565" Association="Self.FK__tblUser_B__id_Us__66603565">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUser_Baiviet" EntitySet="tblUser_Baiviet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlogerWebsiteModelStoreContainer" CdmEntityContainer="BlogerWebsiteEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccount">
+                <ScalarProperty Name="id_acc" ColumnName="id_acc" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="pass_Word" ColumnName="pass_Word" />
+                <ScalarProperty Name="access" ColumnName="access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAllOfWebs">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblAllOfWeb">
+              <MappingFragment StoreEntitySet="tblAllOfWeb">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="slogan" ColumnName="slogan" />
+                <ScalarProperty Name="img_Logo" ColumnName="img_Logo" />
+                <ScalarProperty Name="img_Login" ColumnName="img_Login" />
+                <ScalarProperty Name="link_FanPage_Face" ColumnName="link_FanPage_Face" />
+                <ScalarProperty Name="link_FanPage_TW" ColumnName="link_FanPage_TW" />
+                <ScalarProperty Name="link_FanPage_IG" ColumnName="link_FanPage_IG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBaiViets">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblBaiViet">
+              <MappingFragment StoreEntitySet="tblBaiViet">
+                <ScalarProperty Name="id_BaiViet" ColumnName="id_BaiViet" />
+                <ScalarProperty Name="id_theLoai" ColumnName="id_theLoai" />
+                <ScalarProperty Name="titleBaiViet" ColumnName="titleBaiViet" />
+                <ScalarProperty Name="img_Title" ColumnName="img_Title" />
+                <ScalarProperty Name="danhGia" ColumnName="danhGia" />
+                <ScalarProperty Name="view_BaiViet" ColumnName="view_BaiViet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBV_comment">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblBV_comment">
+              <MappingFragment StoreEntitySet="tblBV_comment">
+                <ScalarProperty Name="id_Cmt" ColumnName="id_Cmt" />
+                <ScalarProperty Name="id_BaiViet" ColumnName="id_BaiViet" />
+                <ScalarProperty Name="text_cmt" ColumnName="text_cmt" />
+                <ScalarProperty Name="cmt_like" ColumnName="cmt_like" />
+                <ScalarProperty Name="cmt_dislike" ColumnName="cmt_dislike" />
+                <ScalarProperty Name="time_cmt" ColumnName="time_cmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTags">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblTag">
+              <MappingFragment StoreEntitySet="tblTag">
+                <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+                <ScalarProperty Name="name_tag" ColumnName="name_tag" />
+                <ScalarProperty Name="sl_tag" ColumnName="sl_tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTag_BaiViet">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblTag_BaiViet">
+              <MappingFragment StoreEntitySet="tblTag_BaiViet">
+                <ScalarProperty Name="id_Tag_Baiviet" ColumnName="id_Tag_Baiviet" />
+                <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+                <ScalarProperty Name="id_BaiViet" ColumnName="id_BaiViet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTHeLoais">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblTHeLoai">
+              <MappingFragment StoreEntitySet="tblTHeLoai">
+                <ScalarProperty Name="id_theloai" ColumnName="id_theloai" />
+                <ScalarProperty Name="name_TheLoai" ColumnName="name_TheLoai" />
+                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="id_acc" ColumnName="id_acc" />
+                <ScalarProperty Name="name_User" ColumnName="name_User" />
+                <ScalarProperty Name="nickName" ColumnName="nickName" />
+                <ScalarProperty Name="date_Of_Birth" ColumnName="date_Of_Birth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="title_User" ColumnName="title_User" />
+                <ScalarProperty Name="link_FB" ColumnName="link_FB" />
+                <ScalarProperty Name="link_IG" ColumnName="link_IG" />
+                <ScalarProperty Name="sl_BaiViet" ColumnName="sl_BaiViet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser_Baiviet">
+            <EntityTypeMapping TypeName="BlogerWebsiteModel.tblUser_Baiviet">
+              <MappingFragment StoreEntitySet="tblUser_Baiviet">
+                <ScalarProperty Name="id_User_Baiviet" ColumnName="id_User_Baiviet" />
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="id_Baiviet" ColumnName="id_Baiviet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

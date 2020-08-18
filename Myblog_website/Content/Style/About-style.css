@@ -1,0 +1,214 @@
+﻿.about-title
+{
+    width: 100%;
+    height: 50px;
+}
+.about-title h2
+{
+    text-align: center;
+    font-size: 45px;
+    color: black;
+    font-weight: bold;
+}
+.about-slogan {
+    margin: auto;
+    width: 70%;
+    height: 85px;
+    margin-bottom: 20px;
+}
+.about-slogan p
+{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+.about-btn-contact
+{
+    margin: auto;
+    width: 15%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.about-btn-contact .btn-contact
+{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 20px;
+}
+.about-profile
+{
+    width: 80%;
+    height: 350px;
+    margin: auto;
+    display: flex;
+}
+.about-profile .btn-pf
+{
+    width: 5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.btn-pf i
+{
+    width: auto;
+    height: auto;
+    font-size: 50px;
+    color: lightgray;
+}
+.btn-pf i:hover
+{
+    color: black;
+    transition: 1s;
+}
+.about-profile .profile-main
+{
+    margin-top: 100px;
+    width: 90%;
+    height: 100%;
+}
+.profile-main .profile-avata
+{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.profile-avata img
+{
+    width: 130px;
+    height: 130px;
+    border-radius: 65px;
+    background-size: cover;
+}
+.profile-my-slogan
+{
+    width: 100%; 
+    height: 30%;
+}
+.profile-my-slogan p
+{
+    text-align: center;
+    font-size: 18px;
+}
+.profile-name {
+    margin: auto;
+    width: 20%;
+    height: 20%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile-name label
+{
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+}
+.profile-name i
+{
+    font-size: 15px;
+    text-align: center;
+}
+.profile-contact
+{
+    width:20%;
+    height: 10%;
+    margin: auto;
+}
+.profile-contact ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile-contact ul li a
+{
+    font-size: 30px;
+    color: black;
+}
+.contact-form
+{
+    width: 70%;
+    height: 470px;
+    margin: auto;
+    margin-top: 200px;
+}
+.contact-form h3
+{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+.contact-form .fr-1
+{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.fr-1 .ct-wrap
+{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.ct-wrap .ct-txt {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #E3E3E3;
+    padding-left: 10px;
+}
+.contact-form .fr-mess
+{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.fr-mess .ct-txt {
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+    background-color: #E3E3E3;
+    padding-left: 10px;
+    padding-top: 5px;
+
+}
+.fr-mess textarea
+{
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+}
+.contact-form .btn-submit {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.btn-submit .submit
+{
+    width: 20%;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    background-color: gray;
+}

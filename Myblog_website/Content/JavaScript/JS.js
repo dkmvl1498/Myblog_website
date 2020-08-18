@@ -3,30 +3,47 @@ function signup() {
     $(".form-singup").removeClass("hidden");
     $(".form-login").addClass("hidden");
 }
-
-
 function backsignin() {
     $(".form-login").removeClass("hidden");
     $(".form-singup").addClass("hidden");
 }
 
-
 $(document).ready(function () {
     $("#btn-login").click(function (e) {
         e.preventDefault();
-        var User = $("#user-login").val();
-        var Pass = $("#pass-login").val();
-        if (User == '') {
+        var userName = $("#user-login").val();
+        var pass_Word = $("#pass-login").val();
+        if (userName == '') {
             $(".al-user").html('hãy nhập tài khoản');
             return false;
         }
-        if (Pass == '') {
+        if (pass_Word == '') {
             $(".al-pass").html('hãy nhập mật khẩu');
             return false;
         }
         else {
-            alert('địt mẹ ok');
-            return false;
+            if (/^[a-zA-Z0-9- ]*$/.test(userName) == false) {
+                $(".al-user").html('Tài khoản không được chứa ký tự đặc biệt');
+            }
+            else {
+                var account = { userName, pass_Word };
+                $.ajax(
+                    {
+                        url: "/Login/CheckLogin",
+                        method: "POST",
+                        data: { account },
+                        success: function (result) {
+                            if (result.Result == 'true') {
+                                window.location.href = "/Home/Index";
+                            }
+                            else {
+                                $(".al-pass").html('Sai tài khoản hoặc mật khẩu');
+                                return false;
+                            }
+                        }
+                    }
+                )
+            }
         }
     })
 

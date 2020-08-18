@@ -9,15 +9,17 @@
 
 <div class="container-login">
     <div class="img-login">
-        <img src="~/Content/images/asdasdasdasd.jpg" />
+        <a href="@Url.Action("Index","Home")">
+            <img src="~/Content/images/asdasdasdasd.jpg" />
+        </a>
     </div>
     <div class="form-main">
-        <form class="form-login" method="post" action="">
+        <form class="form-login" action="@Url.Action("Login","CheckLogin")" method="post" >
             <h3>Well come</h3>
             <h2>Account Login</h2>
-            <input type="text" placeholder="User" class="txt" id="user-login"/>
+            <input type="text" placeholder="User" class="txt" id="user-login" name="User_Name"/>
             <p class="alertlogin al-user" style="color: red;"></p>
-            <input type="password" placeholder="Password" class="txt" id="pass-login"/>
+            <input type="password" placeholder="Password" class="txt" id="pass-login" name="Pass_Word"/>
             <p class="alertlogin al-pass" style="color: red;"></p>
             <input type="submit"class="btn btn-login" id="btn-login" onsubmit="return validate()" value="Login" />
             <ul><li onclick="signup()"><a href="#">Signup</a></li></ul>
