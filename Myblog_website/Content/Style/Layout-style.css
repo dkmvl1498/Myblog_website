@@ -103,6 +103,7 @@ ul
 {
     width: 20%;
     height: 100%;
+    display: flex;
 }
 .nav-user a i
 {
@@ -169,15 +170,37 @@ ul li
     color: white;
     font-size: 35px;
 }
-.nav-menu .space-3 {
+.nav-user .space-3 {
     width: 40%;
     height: 100%;
 }
 
-.login-join {
+.nav-user .login_join {
     width: 60%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-user .login_join a
+{
+    font-size: 18px;
+    color: black;
+}
+
+.nav-user .login_join a:hover
+{
+    text-decoration: none;
+}
+
+.login_join .menu-lv2 {
+    display: none;
+    position: absolute;
+    padding-left: 50px;
+}
+
+.login_join .menu-lv1:hover .menu-lv2
+{
+    display: block;
 }

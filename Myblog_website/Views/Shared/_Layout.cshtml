@@ -50,15 +50,21 @@
                 <div class="space-3"></div>
                 @if (session == null)
                 {
-                <div class="login-join"> 
-                    <a>admin</a>
-                    <a href="@Url.Action("Index_Login","Login")"><i class="fas fa-sign-in-alt"></i></a>
-                </div>  
+                    <div class="login_join">
+                        <a href="@Url.Action("Index_Login","Login")"><i class="fas fa-sign-in-alt"></i></a>
+                    </div>
                 }
                 else
                 {
-                    <a>@session.userName</a>
-                    <a href="@Url.Action("Log_Out","Login")"><i class="fas fa-sign-out-alt"></i></a>
+                    <div class="login_join">
+                        <ul class="menu-lv1">
+                            <li><a>@session.userName</a>
+                                <ul class="menu-lv2">
+                                    <li><a href="@Url.Action("Log_Out","Login")"><i class="fas fa-sign-out-alt"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 }
             </div>
         </div>
