@@ -49,11 +49,12 @@ $(document).ready(function () {
 
     $("#btn-create").click(function (e) {
         e.preventDefault();
-        var cr_User = $("#create-user").val();
+        var userName = $("#create-user").val();
+        var nickName = $("#create-nickname").val()
         var cr_Pass = $("#create-pass").val();
-        var re_Pass = $("#create-re-pass").val();
+        var pass_Word = $("#create-re-pass").val();
 
-        if (cr_User == '' || cr_Pass == '' || re_Pass == '') {
+        if (userName == '' || cr_Pass == '' || pass_Word == '' || pass_Word == '') {
             $(".al-create").html('hãy điền đầy đủ thông tin');
             return false;
         }
@@ -63,15 +64,29 @@ $(document).ready(function () {
                 return false;
             }
             else {
-                if (cr_Pass != re_Pass) {
+                if (cr_Pass != pass_Word) {
                     $(".al-create").html('mật khẩu nhập lại chưa đúng');
                     return false;
                 }
                 else {
-                    alert('địt mẹ ok tiếp');
-                    return false;
+                    var account = { userName, pass_Word };
+                    var usertbl = { nickName }
+                    $.ajax({
+                        url: "/Login/SignUp",
+                        method: "POST",
+                        data: { account, usertbl },
+                        success: function (result) {
+                            if (result.Result == 'True') {
+                                window.location.href = "/Home/Index";
+                            }
+                            else {
+                                $(".al-create").html(result.Result);
+                            }
+                        }
+                    })
                 }
             }
         }
     })
 })
+

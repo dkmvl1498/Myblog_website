@@ -30,6 +30,7 @@ namespace Myblog_website.Models
         public string link_FB { get; set; }
         public string link_IG { get; set; }
         public Nullable<int> sl_BaiViet { get; set; }
+        public string avata_img { get; set; }
     
         public virtual tblAccount tblAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -3,6 +3,8 @@
 <html>
 @{
     var session = Session["Account"] as Myblog_website.Models.tblAccount;
+    //var name_nickname = Session["nickName"] as Myblog_website.Models.tblUser;
+    //var img_link_avata = Session["avata-img"].ToString();
 }
 <head>
     <meta charset="utf-8" />
@@ -56,15 +58,24 @@
                 }
                 else
                 {
-                    <div class="login_join">
-                        <ul class="menu-lv1">
-                            <li><a>@session.userName</a>
-                                <ul class="menu-lv2">
-                                    <li><a href="@Url.Action("Log_Out","Login")"><i class="fas fa-sign-out-alt"></i></a></li>
-                                </ul>
-                            </li>
+            <div class="login_join">
+                @if (Session["avata-img"] == null)
+                {
+                    <img class="img-avata" src="~/Content/images/avata-default.png" />
+                }
+                else
+                {
+                    <img class="img-avata" src="~/Content/images/avata1.jpg" />
+                }
+                <ul class="menu-lv1">
+                    <li>
+                        <a href="@Url.Action("Profile_Page","Home")">@Session["nickName"]</a>
+                        <ul class="menu-lv2">
+                            <li><a href="@Url.Action("Log_Out","Login")"><i class="fas fa-sign-out-alt"></i></a></li>
                         </ul>
-                    </div>
+                    </li>
+                </ul>
+            </div>
                 }
             </div>
         </div>

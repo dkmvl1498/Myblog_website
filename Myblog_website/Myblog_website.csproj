@@ -187,13 +187,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\asdasdasdasd.jpg" />
+    <Content Include="Content\images\avata-default.png" />
     <Content Include="Content\images\avata1.jpg" />
     <Content Include="Content\images\img-slider1.jpg" />
+    <Content Include="Content\JavaScript\editUser.js" />
     <Content Include="Content\JavaScript\JS.js" />
     <Content Include="Content\Style\About-style.css" />
     <Content Include="Content\Style\index-style.css" />
     <Content Include="Content\Style\Index_Login.css" />
     <Content Include="Content\Style\Layout-style.css" />
+    <Content Include="Content\Style\Page-account.css" />
+    <Content Include="Content\Style\Profile-edit-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -243,6 +247,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index_Login.cshtml" />
+    <Content Include="Views\Home\Profile_Page.cshtml" />
+    <Content Include="Views\Home\ProFile_edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,94 @@
+﻿@using Myblog_website.Models;
+@{
+    var infoUser = ViewBag.View_info_User as tblUser;
+}
+
+<link href="~/Content/Style/Profile-edit-style.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<div class="main-pr-edit">
+    <div class="main-edit-1">
+        <table>
+            <tr>
+                <td class="title-td">Name:</td>
+                <td class="in4-id">
+                    @infoUser.name_User
+                    <div class="form-edit hidden" id="edit-name">
+                        <input type="text" class="txt-edit" name="nameUser" id="nameuser" />
+                        <button class="btn-save-edit" onclick="editname(idedit = 'name')" id="btn-editname">Save</button>
+                    </div>
+                </td>
+                <td class="edit-td"><a class="edit-icon" onclick="show_hide_edit1()"><i class="far fa-edit"></i></a></td>
+            </tr>
+            <tr>
+                <td class="title-td">Nick Name:</td>
+                <td class="in4-id">
+                    @infoUser.nickName
+                    <div class="form-edit hidden" id="edit-nickname">
+                        <input type="text" class="txt-edit" id="nickName" />
+                        <button class="btn-save-edit" onclick="editname(idedit = 'nickname')">Save</button>
+                    </div>
+                </td>
+                <td class="edit-td"><a class="edit-icon" onclick="show_hide_edit2()"><i class="far fa-edit"></i></a></td>
+            </tr>
+            <tr>
+                <td class="title-td">Date Of Birth:</td>
+                <td class="in4-id">
+                    14/09/1998
+                    <div class="form-edit hidden" id="edit-date">
+                        <input type="text" class="txt-edit" id="dateOB" />
+                        <button class="btn-save-edit" onclick="editname(idedit = 'dateOfBirth')">Save</button>
+                    </div>
+                </td>
+                <td class="edit-td"><a class="edit-icon" onclick="show_hide_edit3()"><i class="far fa-edit"></i></a></td>
+            </tr>
+            <tr>
+                <td class="title-td">Title User:</td>
+                <td class="in4-id">
+                    @infoUser.title_User
+                    <div class="form-edit hidden" id="edit-title">
+                        <input type="text" class="txt-edit" id="titleUser" />
+                        <button class="btn-save-edit" onclick="editname(idedit = 'titleUser')">Save</button>
+                    </div>
+                </td>
+                <td class="edit-td"><a class="edit-icon" onclick="show_hide_edit4()"><i class="far fa-edit"></i></a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="main-edit-2">
+        <div class="wrap-edit2">
+            <div class="edit-Avata">
+                <img src="~/Content/images/avata1.jpg" />
+                <label>Avata Upload</label>
+                <a class="edit-icon"><i class="far fa-edit"></i></a>
+            </div>
+            <div class="edit-Pass">
+                <label>PassWord</label>
+                <a class="edit-icon"><i class="far fa-edit"></i></a>
+            </div>
+            <div class="edit-Link-main">
+                <div class="edit-Link">
+                    <a class="iconlink"><i class="fab fa-facebook"></i></a>
+                    <a class="iconlink"><i class="fab fa-instagram"></i></a>
+                    <a class="edit-icon" onclick="show_hide_edit_pass()"><i class="far fa-edit"></i></a>
+                </div>
+                <div class="update-link hidden" id="update_link">
+                    <div class="form-link">
+                        <label>FaceBook:</label>
+                        <input type="text" class="txt-link" />
+                    </div>
+                    <div class="form-link">
+                        <label>Instagram:</label>
+                        <input type="text" class="txt-link" />
+                    </div>
+                    <button style="float: right; border: none; font-size: 15px; background-color: deepskyblue;">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaScript/JS.js"></script>
+<script src="~/Content/JavaScript/editUser.js"></script>

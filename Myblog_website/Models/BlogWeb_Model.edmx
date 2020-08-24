@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BlogerWebsiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BlogerWebsiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -46,6 +46,7 @@
           <Property Name="img_Title" Type="varchar" MaxLength="50" />
           <Property Name="danhGia" Type="int" />
           <Property Name="view_BaiViet" Type="int" />
+          <Property Name="tinhtrang" Type="bit" />
         </EntityType>
         <EntityType Name="tblBV_comment">
           <Key>
@@ -96,6 +97,7 @@
           <Property Name="link_FB" Type="varchar" MaxLength="150" />
           <Property Name="link_IG" Type="varchar" MaxLength="150" />
           <Property Name="sl_BaiViet" Type="int" />
+          <Property Name="avata_img" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tblUser_Baiviet">
           <Key>
@@ -229,8 +231,7 @@
             <End Role="tblUser_Baiviet" EntitySet="tblUser_Baiviet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BlogerWebsiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -280,6 +281,7 @@
           <NavigationProperty Name="tblBV_comment" Relationship="Self.FK__tblBV_com__id_Ba__6E01572D" FromRole="tblBaiViet" ToRole="tblBV_comment" />
           <NavigationProperty Name="tblTag_BaiViet" Relationship="Self.FK__tblTag_Ba__id_Ba__6B24EA82" FromRole="tblBaiViet" ToRole="tblTag_BaiViet" />
           <NavigationProperty Name="tblUser_Baiviet" Relationship="Self.FK__tblUser_B__id_Ba__6754599E" FromRole="tblBaiViet" ToRole="tblUser_Baiviet" />
+          <Property Name="tinhtrang" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblBV_comment">
           <Key>
@@ -337,6 +339,7 @@
           <Property Name="sl_BaiViet" Type="Int32" />
           <NavigationProperty Name="tblAccount" Relationship="Self.FK__tblUser__id_acc__628FA481" FromRole="tblUser" ToRole="tblAccount" />
           <NavigationProperty Name="tblUser_Baiviet" Relationship="Self.FK__tblUser_B__id_Us__66603565" FromRole="tblUser" ToRole="tblUser_Baiviet" />
+          <Property Name="avata_img" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblUser_Baiviet">
           <Key>
@@ -515,6 +518,7 @@
           <EntitySetMapping Name="tblBaiViets">
             <EntityTypeMapping TypeName="BlogerWebsiteModel.tblBaiViet">
               <MappingFragment StoreEntitySet="tblBaiViet">
+                <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
                 <ScalarProperty Name="id_BaiViet" ColumnName="id_BaiViet" />
                 <ScalarProperty Name="id_theLoai" ColumnName="id_theLoai" />
                 <ScalarProperty Name="titleBaiViet" ColumnName="titleBaiViet" />
@@ -566,6 +570,7 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="BlogerWebsiteModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="avata_img" ColumnName="avata_img" />
                 <ScalarProperty Name="id_User" ColumnName="id_User" />
                 <ScalarProperty Name="id_acc" ColumnName="id_acc" />
                 <ScalarProperty Name="name_User" ColumnName="name_User" />

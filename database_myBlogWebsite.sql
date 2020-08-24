@@ -33,6 +33,9 @@ create table tblUser
 	sl_BaiViet int default(0)
 )
 
+alter table tblUser
+add avata_img Varchar(250)
+
 create table tblTHeLoai
 (
 	id_theloai int identity primary key,
@@ -49,6 +52,9 @@ create table tblBaiViet
 	danhGia int check(danhGia <= '5'),
 	view_BaiViet int
 )
+
+alter table tblBaiViet
+add tinhtrang bit
 
 create table tblTag
 (

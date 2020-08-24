@@ -28,6 +28,7 @@ namespace Myblog_website.Models
         public string img_Title { get; set; }
         public Nullable<int> danhGia { get; set; }
         public Nullable<int> view_BaiViet { get; set; }
+        public Nullable<bool> tinhtrang { get; set; }
     
         public virtual tblTHeLoai tblTHeLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

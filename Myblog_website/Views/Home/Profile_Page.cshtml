@@ -1,0 +1,33 @@
+﻿@using Myblog_website.Models;
+@{
+    ViewBag.Title = "Profile_Page";
+    var infoUser = ViewBag.View_info_User as tblUser;
+}
+    <link href="~/Content/Style/Page-account.css" rel="stylesheet" />
+
+<div class="wrap-page-account">
+    <div class="header-account">
+        <div class="info-User">
+            <img src="~/Content/images/avata1.jpg" />
+            <h3>@infoUser.nickName</h3>
+        </div>
+        <div class="info-title">
+            <p>@infoUser.title_User</p>
+        </div>
+    </div>
+    <div class="edit-Account">
+        <div class="edit-menu">
+            <ul>
+                <li><a>Post</a></li>
+                <li class="select-check"><a>Account</a></li>
+                <li><a>Favorite</a></li>
+            </ul>
+        </div>
+        <div class="main-edit">
+            @{ 
+                Html.RenderPartial("Profile_edit");
+            }
+        </div>
+    </div>
+</div>
+

@@ -179,13 +179,13 @@ ul li
     width: 60%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+/*    justify-content: space-between;*/
     align-items: center;
 }
 
 .nav-user .login_join a
 {
-    font-size: 18px;
+    font-size: 15px;
     color: black;
 }
 
@@ -203,4 +203,12 @@ ul li
 .login_join .menu-lv1:hover .menu-lv2
 {
     display: block;
+}
+
+.login_join .img-avata
+{
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
 }
